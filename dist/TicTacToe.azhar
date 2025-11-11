@@ -1,0 +1,227 @@
+// Azhar v0.6: Tic-Tac-Toe (compatible with current parser)
+
+// Initialize the board (positions 1-9)
+let b1: string = "1"
+let b2: string = "2"
+let b3: string = "3"
+let b4: string = "4"
+let b5: string = "5"
+let b6: string = "6"
+let b7: string = "7"
+let b8: string = "8"
+let b9: string = "9"
+
+let current_player: string = "X"
+let game_over: bool = false
+let turns: int = 0
+
+function clear_screen() do
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+    print("")
+end
+
+function draw_board() -> void do
+    output("   ")
+    output(b1)
+    output(" | ")
+    output(b2)
+    output(" | ")
+    output(b3)
+    print("")
+    output("  ---+---+---")
+    print("")
+    output("   ")
+    output(b4)
+    output(" | ")
+    output(b5)
+    output(" | ")
+    output(b6)
+    print("")
+    output("  ---+---+---")
+    print("")
+    output("   ")
+    output(b7)
+    output(" | ")
+    output(b8)
+    output(" | ")
+    output(b9)
+    print("")
+    print("")
+end
+
+function check_win() -> bool do
+    let win: bool = false
+
+    if (b1 == current_player and b2 == current_player and b3 == current_player) do
+        win = true
+    end
+    if (b4 == current_player and b5 == current_player and b6 == current_player) do
+        win = true
+    end
+    if (b7 == current_player and b8 == current_player and b9 == current_player) do
+        win = true
+    end
+
+    if (b1 == current_player and b4 == current_player and b7 == current_player) do
+        win = true
+    end
+    if (b2 == current_player and b5 == current_player and b8 == current_player) do
+        win = true
+    end
+    if (b3 == current_player and b6 == current_player and b9 == current_player) do
+        win = true
+    end
+
+    if (b1 == current_player and b5 == current_player and b9 == current_player) do
+        win = true
+    end
+    if (b3 == current_player and b5 == current_player and b7 == current_player) do
+        win = true
+    end
+
+    return win
+end
+
+// NOTE: Azhar v0.6 supports only 'let name: type = expr' as an assignment form.
+// To update existing variables, we use simple single-variable setter functions.
+
+function set_b1(val: string) -> void do b1 = val end
+function set_b2(val: string) -> void do b2 = val end
+function set_b3(val: string) -> void do b3 = val end
+function set_b4(val: string) -> void do b4 = val end
+function set_b5(val: string) -> void do b5 = val end
+function set_b6(val: string) -> void do b6 = val end
+function set_b7(val: string) -> void do b7 = val end
+function set_b8(val: string) -> void do b8 = val end
+function set_b9(val: string) -> void do b9 = val end
+
+function cell_free(s: string) -> bool do
+    if s == "X" or s == "O" do
+        return false
+    end
+    return true
+end
+
+function make_move(pos: string, mark: string) -> bool do
+    // Try each position; if free, set and return true; otherwise fall through and return false.
+
+    if pos == "1" and cell_free(b1) == true do
+        set_b1(mark)
+        return true
+    end
+
+    if pos == "2" and cell_free(b2) == true do
+        set_b2(mark)
+        return true
+    end
+
+    if pos == "3" and cell_free(b3) == true do
+        set_b3(mark)
+        return true
+    end
+
+    if pos == "4" and cell_free(b4) == true do
+        set_b4(mark)
+        return true
+    end
+
+    if pos == "5" and cell_free(b5) == true do
+        set_b5(mark)
+        return true
+    end
+
+    if pos == "6" and cell_free(b6) == true do
+        set_b6(mark)
+        return true
+    end
+
+    if pos == "7" and cell_free(b7) == true do
+        set_b7(mark)
+        return true
+    end
+
+    if pos == "8" and cell_free(b8) == true do
+        set_b8(mark)
+        return true
+    end
+
+    if pos == "9" and cell_free(b9) == true do
+        set_b9(mark)
+        return true
+    end
+
+    return false
+end
+
+function switch_player() -> void do
+    if current_player == "X" do
+        current_player = "O"
+    else do
+        current_player = "X"
+    end
+end
+
+function run_game_turn() -> void do
+    let move: string = ""
+    let valid: bool = false
+
+    if game_over == true do
+        return
+    end
+
+    if turns >= 9 do
+        game_over = true
+        print("--- TIE GAME! ---")
+        return
+    end
+
+    while valid == false do
+        clear_screen()
+        print("TIC-TAC-TOE - Azhar v0.6")
+        draw_board()
+
+        output("Player ")
+        output(current_player)
+        output("'s turn. Enter position (1-9): ")
+
+        move = read_string()
+
+        valid = make_move(move, current_player)
+
+        if valid == false do
+            print("--- Invalid move or position taken. Try again. ---")
+        end
+    end
+
+    if check_win() == true do
+        game_over = true
+        clear_screen()
+        draw_board()
+        output("Player ")
+        output(current_player)
+        print(" WINS!")
+    end
+
+    if game_over == false do
+        turns = turns + 1
+        switch_player()
+        run_game_turn()
+    end
+end
+
+// --- START PROGRAM ---
+print("AZHAR TIC-TAC-TOE STARTING...")
+run_game_turn()
+print("GAME ENDED.")

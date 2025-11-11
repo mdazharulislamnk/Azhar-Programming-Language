@@ -1,0 +1,9 @@
+print("AZHAR")
+function add(a:int, b:int) -> int do
+    return a + b
+end
+let x: int = 1
+x = add(x, 2)
+print(x)
+let n: int = 7
+print(n + 5)

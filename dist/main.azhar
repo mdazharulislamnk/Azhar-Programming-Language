@@ -1,0 +1,37 @@
+// Azhar v0.6: Multiplication Table Generator with User Input (Final Stable Fix)
+
+// --- Main Program Execution ---
+
+function run_table_generator() -> void do
+    // FIX: The prompt runs outside the declaration block.
+    output("--- AZHAR MULTIPLICATION TABLE ---")
+    output("Enter the number you want the table for: ")
+    
+    // FIX: Assign input directly during declaration.
+    let table_num: int = read_int() 
+    
+    let counter: int = 1
+    let result: int = 0
+    
+    print("") // Add a newline after the input
+
+    // 2. Use the proper WHILE loop (v0.6 feature)
+    while counter <= 10 do
+        result = table_num * counter
+
+        // Print: [table_num] * [counter] = [result]
+        output(table_num)
+        output(" * ")
+        output(counter)
+        output(" = ")
+        print(result) // print forces the newline
+
+        // Increment the counter
+        counter = counter + 1
+    end // The parser expects 'end' here when compiling the while loop!
+
+    print("----------------------------------")
+    print("Table finished.")
+end
+
+run_table_generator()
