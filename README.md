@@ -93,11 +93,14 @@
 
 # Variables
 
- <pre>let a: int = 3
+<pre>
+  let a: int = 3
   let name: string = "Azhar"
   let ok: bool = true
   a = a + 1
-  ok = false ```</pre>
+  ok = false
+</pre>
+
 
 # Arithmetic & Comparisons
 
@@ -112,50 +115,61 @@
 
 # Conditionals
 
-- let ok: bool = true
-- if ok do
--    print(1)
-- else do
--    print(0)
-- end
+<pre>
+let ok: bool = true
+if ok do
+    print(1)
+ else do
+    print(0)
+end
+</pre>
+
 
 #Loops and break
 
-- let i: int = 0
-- while i < 3 do
--    print(i)
--    if i == 1 do
--        break
--    end
--    i = i + 1
-- end
+<pre>
+let i: int = 0
+ while i < 3 do
+    print(i)
+    if i == 1 do
+        break
+    end
+    i = i + 1
+ end
+</pre>
 
 #Functions
 
-- function add(a: int, b: int) -> int do
--   return a + b
-- end
-- print(add(4, 5))  # 9
+<pre>
+ function add(a: int, b: int) -> int do
+   return a + b
+ end
+ print(add(4, 5))  # 9
 
-- function banner() -> void do
--   print("AZHAR")
-- end
-- banner()
+ function banner() -> void do
+   print("AZHAR")
+ end
+ banner()
+
+</pre>
 
 - Full Example (hello.azhar)
 
-- print("AZHAR")
+<pre>
+ print("AZHAR")
 
-- function add(a: int, b: int) -> int do
--    return a + b
-- end
+ function add(a: int, b: int) -> int do
+    return a + b
+ end
 
-- let x: int = 1
-- x = add(x, 2)
-- print(x)
+ let x: int = 1
+ x = add(x, 2)
+ print(x)
 
-- let n: int = 7
-- print(n + 5)
+ let n: int = 7
+ print(n + 5)
+
+</pre>
 
 - Expected output:
 - 3
