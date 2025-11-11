@@ -93,11 +93,11 @@
 
 # Variables
 
- `--- let a: int = 3
-  --- let name: string = "Azhar"
-  --- let ok: bool = true
-  --- a = a + 1
-  --- ok = false`
+ <pre>let a: int = 3
+  let name: string = "Azhar"
+  let ok: bool = true
+  a = a + 1
+  ok = false ```</pre>
 
 # Arithmetic & Comparisons
 
